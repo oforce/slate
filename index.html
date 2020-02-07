@@ -338,9 +338,9 @@ You can make little things like this that have code <code>meowmeowmeow</code> co
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
       </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"date"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fd1333aa-ffff-49a2-a1b1-2a69e17f0e72"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-06T21:15:19.158699"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joe"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shmoe"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joesemail@example.com"</span><span class="p">,</span><span class="w">
@@ -368,7 +368,7 @@ You can make little things like this that have code <code>meowmeowmeow</code> co
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'openssl'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://localhost:4000/invitations/invitation_id?status=status"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://example.com/invitations/invitation_id?status=status"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
@@ -381,7 +381,7 @@ You can make little things like this that have code <code>meowmeowmeow</code> co
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://localhost:4000/invitations/invitation_id"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://example.com/invitations/invitation_id"</span>
 
 <span class="n">querystring</span> <span class="o">=</span> <span class="p">{</span><span class="s">"status"</span><span class="p">:</span><span class="s">"status"</span><span class="p">}</span>
 
@@ -390,7 +390,7 @@ You can make little things like this that have code <code>meowmeowmeow</code> co
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">querystring</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://localhost:4000/invitations/invitation_id?status=status"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/invitations/invitation_id?status=status"</span>
   -X <span class="s2">"PUT"</span>
   -H <span class="s2">"accept: */*"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
@@ -403,7 +403,7 @@ You can make little things like this that have code <code>meowmeowmeow</code> co
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"PUT"</span><span class="p">,</span> <span class="s2">"https://localhost:4000/invitations/invitation_id?status=status"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"PUT"</span><span class="p">,</span> <span class="s2">"http://example.com/invitations/invitation_id?status=status"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"accept"</span><span class="p">,</span> <span class="s2">"*/*"</span><span class="p">);</span>
 
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
@@ -413,16 +413,19 @@ You can make little things like this that have code <code>meowmeowmeow</code> co
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="s2">"account_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77777777-8ddd-4fc9-904f-4ddddac59a0b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"73333330-ceb6-408e-8880-28c2cdd6e11f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/enrollments/events/invitations/invitation_accepted"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"from_contractor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27e58a95-c106-2222-8c9c-3555555653f0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6eeeeee-353e-463d-bf58-26fccccc5e8b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"faaaaaaa-5e8f-49a2-a1b1-2111117f0e72"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint updates the status of a specific invitation.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>PUT https://localhost:4000/invitations/invitation_id</code></p>
+<p><code>PUT http://example.com/invitations/invitation_id</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -453,7 +456,7 @@ You can make little things like this that have code <code>meowmeowmeow</code> co
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 <span class="nb">require</span> <span class="s1">'openssl'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://localhost:4000/clients/client_id/invitations"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://example.com/clients/client_id/invitations"</span><span class="p">)</span>
 
 <span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
 <span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
@@ -467,7 +470,7 @@ You can make little things like this that have code <code>meowmeowmeow</code> co
 <span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://localhost:4000/clients/client_id/invitations"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://example.com/clients/client_id/invitations"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'accept'</span><span class="p">:</span> <span class="s">"*/*"</span><span class="p">,</span>
@@ -477,7 +480,7 @@ You can make little things like this that have code <code>meowmeowmeow</code> co
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://localhost:4000/clients/client_id/invitations"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/clients/client_id/invitations"</span>
   -X POST
   -H <span class="s1">'accept: */*, content-type: application/json'</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
@@ -490,7 +493,7 @@ You can make little things like this that have code <code>meowmeowmeow</code> co
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="s2">"https://localhost:4000/clients/client_id/invitations"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="s2">"http://example.com/clients/client_id/invitations"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"accept"</span><span class="p">,</span> <span class="s2">"*/*"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"content-type"</span><span class="p">,</span> <span class="s2">"application/json"</span><span class="p">);</span>
 
@@ -502,24 +505,24 @@ You can make little things like this that have code <code>meowmeowmeow</code> co
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"activation_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C50DFA35-5BA9"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9e37a877-873d-4fc9-904f-43dfdac59a0b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9e37a877-873d-4fc9-904f-43df99999a0b"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test11@invite.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71b77a30-ceb6-408e-9b80-28c2cdd6e11f"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"enrollment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71b77a30-ceb6-408e-9b80-28c26666611f"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"event_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/enrollments/events/invitations/invitation_created"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test11"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"from_contractor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27e58a95-c106-49b2-8c9c-31fb595653f0"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6fb7d1e-353e-463d-bf58-26fe83fc5e8b"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"from_contractor_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27e58a95-c106-49b2-8c9c-3111115653f0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"invitation_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c6fb7d1e-353e-463d-bf58-26fe8888888b"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invite"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"mobile_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1111111111"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"icm"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fd1a13aa-5e8f-49a2-a1b1-2a69e17f0e72"</span><span class="w">
+        </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fd1a13aa-5e8f-49a2-a1b1-2aaaaaaf0e72"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint posts a new contractor invitation to a client.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST https://localhost:4000/clients/client_id/invitations</code></p>
+<p><code>POST http://example.com/clients/client_id/invitations</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
