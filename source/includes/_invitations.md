@@ -61,9 +61,9 @@ xhr.send(data);
 [
   {
       "data": {
-        "account_id": "1",
-        "status": "accepted",
-        "created_date": "date",
+        "account_id": "fd1333aa-ffff-49a2-a1b1-2a69e17f0e72",
+        "status": "pending",
+        "created_date": "2020-02-06T21:15:19.158699",
         "first_name": "joe",
         "last_name": "shmoe",
         "email": "joesemail@example.com",
@@ -92,7 +92,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://localhost:4000/invitations/invitation_id?status=status")
+url = URI("http://example.com/invitations/invitation_id?status=status")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -108,7 +108,7 @@ puts response.read_body
 ```python
 import requests
 
-url = "https://localhost:4000/invitations/invitation_id"
+url = "http://example.com/invitations/invitation_id"
 
 querystring = {"status":"status"}
 
@@ -120,7 +120,7 @@ print(response.text)
 ```
 
 ```shell
-curl "https://localhost:4000/invitations/invitation_id?status=status"
+curl "http://example.com/invitations/invitation_id?status=status"
   -X "PUT"
   -H "accept: */*"
 ```
@@ -136,7 +136,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("PUT", "https://localhost:4000/invitations/invitation_id?status=status");
+xhr.open("PUT", "http://example.com/invitations/invitation_id?status=status");
 xhr.setRequestHeader("accept", "*/*");
 
 xhr.send(data);
@@ -147,19 +147,22 @@ xhr.send(data);
 ```json
   {
     "data": {
-      "user_id": "",
-      "invitation_id": "",
-      "enrollment_id": "",
-      "client_id": ""
+        "account_id": null,
+        "client_id": "77777777-8ddd-4fc9-904f-4ddddac59a0b",
+        "enrollment_id": "73333330-ceb6-408e-8880-28c2cdd6e11f",
+        "event_type": "/enrollments/events/invitations/invitation_accepted",
+        "from_contractor_id": "27e58a95-c106-2222-8c9c-3555555653f0",
+        "invitation_id": "c6eeeeee-353e-463d-bf58-26fccccc5e8b",
+        "user_id": "faaaaaaa-5e8f-49a2-a1b1-2111117f0e72"
     }
-  }
+}
 ```
 
 This endpoint updates the status of a specific invitation.
 
 ### HTTP Request
 
-`PUT https://localhost:4000/invitations/invitation_id`
+`PUT http://example.com/invitations/invitation_id`
 
 ### URL Parameters
 
@@ -180,7 +183,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://localhost:4000/clients/client_id/invitations")
+url = URI("http://example.com/clients/client_id/invitations")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -197,7 +200,7 @@ puts response.read_body
 ```python
 import requests
 
-url = "https://localhost:4000/clients/client_id/invitations"
+url = "http://example.com/clients/client_id/invitations"
 
 headers = {
     'accept': "*/*",
@@ -210,7 +213,7 @@ print(response.text)
 ```
 
 ```shell
-curl "https://localhost:4000/clients/client_id/invitations"
+curl "http://example.com/clients/client_id/invitations"
   -X POST
   -H 'accept: */*, content-type: application/json'
 ```
@@ -226,7 +229,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "https://localhost:4000/clients/client_id/invitations");
+xhr.open("POST", "http://example.com/clients/client_id/invitations");
 xhr.setRequestHeader("accept", "*/*");
 xhr.setRequestHeader("content-type", "application/json");
 
@@ -239,18 +242,18 @@ xhr.send(data);
 {
     "data": {
         "activation_code": "C50DFA35-5BA9",
-        "client_id": "9e37a877-873d-4fc9-904f-43dfdac59a0b",
+        "client_id": "9e37a877-873d-4fc9-904f-43df99999a0b",
         "email": "test11@invite.com",
-        "enrollment_id": "71b77a30-ceb6-408e-9b80-28c2cdd6e11f",
+        "enrollment_id": "71b77a30-ceb6-408e-9b80-28c26666611f",
         "event_type": "/enrollments/events/invitations/invitation_created",
         "external_id": null,
         "first_name": "Test11",
-        "from_contractor_id": "27e58a95-c106-49b2-8c9c-31fb595653f0",
-        "invitation_id": "c6fb7d1e-353e-463d-bf58-26fe83fc5e8b",
+        "from_contractor_id": "27e58a95-c106-49b2-8c9c-3111115653f0",
+        "invitation_id": "c6fb7d1e-353e-463d-bf58-26fe8888888b",
         "last_name": "Invite",
         "mobile_phone": "1111111111",
         "source": "icm",
-        "user_id": "fd1a13aa-5e8f-49a2-a1b1-2a69e17f0e72"
+        "user_id": "fd1a13aa-5e8f-49a2-a1b1-2aaaaaaf0e72"
     }
 }
 ```
@@ -259,7 +262,7 @@ This endpoint posts a new contractor invitation to a client.
 
 ### HTTP Request
 
-`POST https://localhost:4000/clients/client_id/invitations`
+`POST http://example.com/clients/client_id/invitations`
 
 ### URL Parameters
 
