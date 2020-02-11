@@ -281,3 +281,4 @@ from_contractor_id | Contractor's id | false
 email | Contractor's email | true
 activiation_code | Contractor's activiation code | true
 
+<div style="margin: 10px;"><div style="width:45%; height:500px; background-image:url('./images/Create_Oforce_Invitation.png'); background-position: center; background-size: cover;" ></div></div>

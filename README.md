@@ -11,3 +11,7 @@
 ## Run
 - `bundle exec middleman server`
 
+## Deploy
+- Commit your changes
+- `./deploy.sh`
+
